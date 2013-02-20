@@ -44,11 +44,13 @@ bash "rbenv" do
   environment "HOME" => node['user']['home']
 
   code <<-EOH
-    source ~/.zshrc
-    rbenv install #{node['rbenv']['version']}
-    rbenv global #{node['rbenv']['version']}
-    rbenv versions
-    rbenv rehash
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> #{node['user']['home']}/.bashrc
+    echo 'eval "$(rbenv init -)"' >> #{node['user']['home']}/.bashrc
+    source #{node['user']['home']}/.bashrc
+    #{node['user']['home']}/.rbenv/bin/rbenv install #{node['rbenv']['version']}
+    #{node['user']['home']}/.rbenv/bin/rbenv global #{node['rbenv']['version']}
+    #{node['user']['home']}/.rbenv/bin/rbenv versions
+    #{node['user']['home']}/.rbenv/bin/rbenv rehash
   EOH
 
   not_if {

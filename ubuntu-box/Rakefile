@@ -1,15 +1,9 @@
 # -*- coding: utf-8 -*-
 
 desc 'Create ubuntu box'
-task :box do
+task :create do
   sh 'bundle install --path=vendor/bundler'
-  sh 'be vagrant basebox build ubuntu-12.10'
-  sh 'be vagrant basebox export ubuntu-12.10'
-  sh 'vagrant box add \'ubuntu-12.10\' \'ubuntu-12.10.box\''
-  
-  p 'Succeed to create ubuntu-12.10 box !'
-  p 'To use it:'
-  p 'vagrant init \'ubuntu-12.10\''
-  p 'vagrant up'
-  p 'vagrant ssh'
+  sh 'bundle exec vagrant basebox build \'ubuntu-12.10\''
+  sh 'bundle exec vagrant basebox export \'ubuntu-12.10\''
+  sh 'bundle exec vagrant box add \'ubuntu-12.10\' \'ubuntu-12.10.box\''
 end

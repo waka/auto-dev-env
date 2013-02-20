@@ -5,6 +5,7 @@ vagrantとchef-soloを使って、Ubuntu12.10の開発環境の構築を自動�
 ### あらかじめ必要なもの
 
 * VirtualBox
+* rake
 * bundler
 * vagrant
 
@@ -13,14 +14,14 @@ vagrantとchef-soloを使って、Ubuntu12.10の開発環境の構築を自動�
 以下、インストール順。
 
 * language-pack-ja
-* zsh
 * curl
+* zsh
 * screen
 * git
 * dotfiles(zshrc, screenrc, vimrc, gitconfig)
 * vim-scripts
-* rbenv
-* nodebrew
+* rbenv, ruby-1.9.3
+* nodebrew, node-0.8.20
 * mysql-5.6
 * redis-2.6
 * mongodb-2.2
@@ -37,7 +38,7 @@ $ cd auto-dev-env
 
 ```sh
 $ cd ubuntu-box
-$ rake box
+$ rake create
 ```
 
 'ubuntu-12.10'という名前でvagrantにboxが追加される。
