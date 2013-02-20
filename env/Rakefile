@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+
+
+desc 'Prepare knife'
+task :prepare do
+  sh 'cd chef-repo; bundle install --path=vendor/bundler'
+  sh 'cd chef-repo; bundle exec knife solo prepare vagrant@192.168.50.2 --ssh-password vagrant'
+end
+
+desc 'Do cookbooks'
+task :cook do
+  sh 'cd chef-repo; bundle exec knife solo cook vagrant@192.168.50.2 --ssh-password vagrant'
+end
+
+# initial setup
+task :setup => [:prepare, :cook]

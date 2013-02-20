@@ -1,0 +1,35 @@
+{
+  "user": {
+    "name": "yo_waka",
+    "group": "admin",
+    "home": "/home/yo_waka"
+  },
+  "rbenv": {
+    "version": "1.9.3-p385"
+  },
+  "nodebrew": {
+    "version": "v0.8.20"
+  },
+  "mysql": {
+    "version": "5.6.10"
+  },
+  "redis": {
+    "version": "2.6.10"
+  },
+  "mongodb": {
+    "version": "2.2.3"
+  },
+  "run_list": [
+    "base_packages",
+    "zsh",
+    "mkdir",
+    "dotfiles",
+    "vim-scripts",
+    "rbenv",
+    "nodebrew",
+    "mysql",
+    "redis",
+    "mongodb",
+    "cleanup"
+  ]
+}
