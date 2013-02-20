@@ -48,8 +48,9 @@ $ rake box
 $ cd env
 $ vagrant up
 $ rake setup
-$ ssh yo_waka@192.168.50.2
+$ vagrant ssh
 ```
 
+zshへの変更はログインしてからchsh（cookbookでやるとssh認証でこけるので）。  
 作成ユーザーや各種サーバーのバージョンを変えたいときは、chef-repo/node/192.168.50.2.jsonを編集する。  
 Net::SSH::HostKeyMismatchが起きた場合、~/.ssh/known_hostsから以前のfingerprintを削除する。
