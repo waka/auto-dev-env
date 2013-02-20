@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-%w{language-pack-ja curl screen git-core}.each do |name|
+%w{language-pack-ja curl zsh screen git-core}.each do |name|
   package name do
     action :install
   end
