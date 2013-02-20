@@ -30,19 +30,26 @@ vagrantとchef-soloを使って、Ubuntu12.10の開発環境の構築を自動�
 
 ```sh
 $ git clone https://github.com/waka/auto-dev-env.git
-$ cd auto-dev-env/env
-$ rake setup
-$ vagrant ssh
+$ cd auto-dev-env
 ```
 
-Net::SSH::HostKeyMismatchが起きた場合、~/.ssh/known_hostsから以前のfingerprintを削除する。
+### boxファイルを作る
 
-
-## boxファイルを作り直したいとき
-
-``sh
+```sh
 $ cd ubuntu-box
 $ rake box
 ```
 
 'ubuntu-12.10'という名前でvagrantにboxが追加される。
+
+### 各種環境のインストール、セットアップ
+
+```sh
+$ cd env
+$ vagrant up
+$ rake setup
+$ ssh yo_waka@192.168.50.2
+```
+
+作成ユーザーや各種サーバーのバージョンを変えたいときは、chef-repo/node/192.168.50.2.jsonを編集する。  
+Net::SSH::HostKeyMismatchが起きた場合、~/.ssh/known_hostsから以前のfingerprintを削除する。
