@@ -5,6 +5,7 @@ vagrantとchef-soloを使って、Ubuntu12.10の開発環境の構築を自動�
 ### あらかじめ必要なもの
 
 * VirtualBox
+* rake
 * bundler
 * rake
 * vagrant
@@ -18,8 +19,8 @@ gem install vagrant
 ### インストールされるもの
 
 * language-pack-ja
-* zsh
 * curl
+* zsh
 * screen
 * git
 * dotfiles(zshrc, screenrc, vimrc, gitconfig)

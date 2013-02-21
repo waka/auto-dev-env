@@ -11,7 +11,7 @@
 git "#{node['user']['home']}/repos/dotfiles" do
   repository "https://github.com/waka/dotfiles.git"
   reference "master"
-  action :sync
+  action :checkout
   user node['user']['name']
   group node['user']['group']
 end

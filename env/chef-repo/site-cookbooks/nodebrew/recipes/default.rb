@@ -16,9 +16,9 @@ bash "nodebrew" do
 
   code <<-EOH
     curl https://raw.github.com/hokaccha/nodebrew/master/nodebrew | perl - setup
-    source ~/.zshrc
-    nodebrew install-binary #{node['nodebrew']['version']}
-    nodebrew use #{node['nodebrew']['version']}
+    echo 'PATH="$HOME/.nodebrew/current/bin:$PATH"' >> ~/.bashrc
+    #{node['user']['home']}/.nodebrew/current/bin/nodebrew install-binary #{node['nodebrew']['version']}
+    #{node['user']['home']}/.nodebrew/current/bin/nodebrew use #{node['nodebrew']['version']}
   EOH
 
   not_if {
