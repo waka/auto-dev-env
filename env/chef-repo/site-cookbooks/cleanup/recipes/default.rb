@@ -15,12 +15,6 @@ file "#{node['user']['home']}/install.sh" do
   action :delete
 end
 
-# delete mysql src
-directory "/usr/local/src/mysql" do
-  recursive true
-  action :delete
-end
-
 # delete local directories
 directory "/usr/local/games" do
   recursive true

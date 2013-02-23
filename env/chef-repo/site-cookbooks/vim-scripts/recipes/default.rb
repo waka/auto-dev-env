@@ -7,20 +7,24 @@
 # All rights reserved - Do Not Redistribute
 #
 
-repoDir = "#{node['user']['home']}/repos/vim"
-destDir = "#{node['user']['home']}/.vim"
+repos_dir = "#{node['user']['home']}/repos/vim"
+dest_dir = "#{node['user']['home']}/.vim"
 
 
 # mkdir .vim
-directory "#{node['user']['home']}/.vim" do
+directory dest_dir do
   owner node['user']['name']
   group node['user']['group']
   mode 00755
   action :create
+
+  not_if {
+    File.exists?(dest_dir)
+  }
 end
 
 # neocomplcache
-git "#{repoDir}/neocomplcache" do
+git "#{repos_dir}/neocomplcache" do
   repository "https://github.com/Shougo/neocomplcache.git"
   reference "master"
   action :sync
@@ -28,17 +32,17 @@ git "#{repoDir}/neocomplcache" do
   group node['user']['group']
 end
 %w{autoload plugin vest}.each do |dir|
-  srcDir = "#{repoDir}/neocomplcache/#{dir}"
+  src_dir = "#{repos_dir}/neocomplcache/#{dir}"
   execute "copy neocomplcache" do
     user node['user']['name']
     group node['user']['group']
-    command "cp -r #{srcDir} #{destDir}"
+    command "cp -r #{src_dir} #{dest_dir}"
     action :run
   end
 end
 
 # minibufexpl
-git "#{repoDir}/minibufexpl" do
+git "#{repos_dir}/minibufexpl" do
   repository "https://github.com/fholgado/minibufexpl.vim.git"
   reference "master"
   action :sync
@@ -46,17 +50,17 @@ git "#{repoDir}/minibufexpl" do
   group node['user']['group']
 end
 %w{plugin}.each do |dir|
-  srcDir = "#{repoDir}/minibufexpl/#{dir}"
+  src_dir = "#{repos_dir}/minibufexpl/#{dir}"
   execute "copy minibufexpl" do
     user node['user']['name']
     group node['user']['group']
-    command "cp -r #{srcDir} #{destDir}"
+    command "cp -r #{src_dir} #{dest_dir}"
     action :run
   end
 end
 
 # vim-rails
-git "#{repoDir}/vim-rails" do
+git "#{repos_dir}/vim-rails" do
   repository "https://github.com/tpope/vim-rails.git"
   reference "master"
   action :sync
@@ -64,17 +68,17 @@ git "#{repoDir}/vim-rails" do
   group node['user']['group']
 end
 %w{autoload plugin}.each do |dir|
-  srcDir = "#{repoDir}/vim-rails/#{dir}"
+  src_dir = "#{repos_dir}/vim-rails/#{dir}"
   execute "copy vim-rails" do
     user node['user']['name']
     group node['user']['group']
-    command "cp -r #{srcDir} #{destDir}"
+    command "cp -r #{src_dir} #{dest_dir}"
     action :run
   end
 end
 
 # vim-markdown
-git "#{repoDir}/vim-markdown" do
+git "#{repos_dir}/vim-markdown" do
   repository "https://github.com/plasticboy/vim-markdown.git"
   reference "master"
   action :sync
@@ -82,17 +86,17 @@ git "#{repoDir}/vim-markdown" do
   group node['user']['group']
 end
 %w{after ftdetect syntax}.each do |dir|
-  srcDir = "#{repoDir}/vim-markdown/#{dir}"
+  src_dir = "#{repos_dir}/vim-markdown/#{dir}"
   execute "copy vim-markdown" do
     user node['user']['name']
     group node['user']['group']
-    command "cp -r #{srcDir} #{destDir}"
+    command "cp -r #{src_dir} #{dest_dir}"
     action :run
   end
 end
 
 # vim-ragtag
-git "#{repoDir}/vim-ragtag" do
+git "#{repos_dir}/vim-ragtag" do
   repository "https://github.com/tpope/vim-ragtag.git"
   reference "master"
   action :sync
@@ -100,17 +104,17 @@ git "#{repoDir}/vim-ragtag" do
   group node['user']['group']
 end
 %w{plugin}.each do |dir|
-  srcDir = "#{repoDir}/vim-ragtag/#{dir}"
+  src_dir = "#{repos_dir}/vim-ragtag/#{dir}"
   execute "copy vim-ragtag" do
     user node['user']['name']
     group node['user']['group']
-    command "cp -r #{srcDir} #{destDir}"
+    command "cp -r #{src_dir} #{dest_dir}"
     action :run
   end
 end
 
 # Railscasts-Theme-GUIand256color
-git "#{repoDir}/Railscasts-Theme-GUIand256color" do
+git "#{repos_dir}/Railscasts-Theme-GUIand256color" do
   repository "https://github.com/vim-scripts/Railscasts-Theme-GUIand256color.git"
   reference "master"
   action :sync
@@ -118,11 +122,11 @@ git "#{repoDir}/Railscasts-Theme-GUIand256color" do
   group node['user']['group']
 end
 %w{colors}.each do |dir|
-  srcDir = "#{repoDir}/Railscasts-Theme-GUIand256color/#{dir}"
+  srcDir = "#{repos_dir}/Railscasts-Theme-GUIand256color/#{dir}"
   execute "copy railscasts" do
     user node['user']['name']
     group node['user']['group']
-    command "cp -r #{srcDir} #{destDir}"
+    command "cp -r #{src_dir} #{dest_dir}"
     action :run
   end
 end
