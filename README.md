@@ -7,11 +7,16 @@ vagrantとchef-soloを使って、Ubuntu12.10の開発環境の構築を自動�
 * VirtualBox
 * rake
 * bundler
+* rake
 * vagrant
 
-### インストールされるもの
+```sh
+gem install bundler
+gem install rake
+gem install vagrant
+```
 
-以下、インストール順。
+### インストールされるもの
 
 * language-pack-ja
 * curl
@@ -19,9 +24,11 @@ vagrantとchef-soloを使って、Ubuntu12.10の開発環境の構築を自動�
 * screen
 * git
 * dotfiles(zshrc, screenrc, vimrc, gitconfig)
-* vim-scripts
-* rbenv, ruby-1.9.3
-* nodebrew, node-0.8.20
+* vim-scripts(neocomplecache, minibufexpl, vim-rails, vim-markdown, vim-ragtag, railscasts)
+* rbenv, ruby-build
+* ruby-1.9.3
+* nodebrew
+* node-0.8.20
 * mysql-5.6
 * redis-2.6
 * mongodb-2.2
@@ -53,5 +60,5 @@ $ vagrant ssh
 ```
 
 zshへの変更はログインしてからchsh（cookbookでやるとssh認証でこけるので）。  
-作成ユーザーや各種サーバーのバージョンを変えたいときは、chef-repo/node/192.168.50.2.jsonを編集する。  
+作成ユーザーや各種ソフトのバージョンを変えたいときは、chef-repo/node/192.168.50.2.jsonを編集する。  
 Net::SSH::HostKeyMismatchが起きた場合、~/.ssh/known_hostsから以前のfingerprintを削除する。
