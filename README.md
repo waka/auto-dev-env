@@ -26,9 +26,9 @@ gem install vagrant
 * dotfiles(zshrc, screenrc, vimrc, gitconfig)
 * vim-scripts(neocomplecache, minibufexpl, vim-rails, vim-markdown, vim-ragtag, railscasts)
 * rbenv, ruby-build
-* ruby-1.9.3
+* ruby-2.0.0-p0
 * nodebrew
-* node-0.8.20
+* node-0.10.0
 * mysql-5.6
 * redis-2.6
 * mongodb-2.2
